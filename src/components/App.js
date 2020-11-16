@@ -36,13 +36,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      buffer: null,
-      account: "",
-      dvideo: null,
-      videos: [],
-      loading: false,
-      currentHash: null,
-      currentTitle: null
+      loading: false
     };
   }
 
@@ -55,14 +49,7 @@ class App extends Component {
             <p>Loading...</p>
           </div>
         ) : (
-          <Main
-            videos={this.state.videos}
-            uploadVideo={this.uploadVideo}
-            captureFile={this.captureFile}
-            changeVideo={this.changeVideo}
-            currentHash={this.state.currentHash}
-            currentTitle={this.state.currentTitle}
-          />
+          <Main />
         )}
       </div>
     );

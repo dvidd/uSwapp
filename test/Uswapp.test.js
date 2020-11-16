@@ -63,11 +63,11 @@ contract("uSwapp", ([deployer, contractor]) => {
       assert.equal(event.doneCreator, false, "doneCreator is correct");
       assert.equal(event.done, false, "done is correct");
 
-      // FAILURE: Video must have hash
+      // Must have title
       await uswapp.createNewSwap("", description, ammount, contractor).should.be
         .rejected;
 
-      // FAILURE: Video must have title
+      // Must have description
       await uswapp.createNewSwap(title, "", ammount, contractor).should.be
         .rejected;
     });
@@ -90,6 +90,39 @@ contract("uSwapp", ([deployer, contractor]) => {
       assert.equal(swap.done, false, "done is correct");
     });
   });
+
+  // Add username by address
+  describe("Username", async () => {
+    let result;
+    before(async () => {
+      result = await uswapp.createUser("dvidd");
+    });
+
+    //check event
+    it("check event of creation new user", async () => {
+      const event = result.logs[0].args;
+
+      // data of the function
+      assert.equal(event.userAddress, deployer, "User Address is correct");
+      assert.equal(event.username, "dvidd", "Username is correct");
+
+      assert.equal(event.username, "dvidd", "Username is correct");
+
+      // Must be a valid addreess
+      await uswapp.createUser("").should.be.rejected;
+    });
+
+    //check from Struct
+    it("Get the user", async () => {
+      const user = await uswapp.users(deployer);
+
+      // data of the function
+      assert.equal(user.username, "dvidd", "Username is correct");
+      assert.equal(user.set, true, "Set user is correct");
+    });
+  });
+  // check user name
+
   // check validity of the work
 
   // Aprove transaction and send tokens
