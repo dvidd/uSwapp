@@ -58,6 +58,9 @@ contract uSwapp {
     );
 
     // Create a new contract
+    // Todo Widhtdraw the ammount for the contract
+    // Think obout how is making the contract and how we could do it so it works
+    // In boths ways
     function createNewSwap(
         string memory _title,
         string memory _description,
