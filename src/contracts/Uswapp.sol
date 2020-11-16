@@ -1,0 +1,106 @@
+pragma solidity >=0.5.0;
+
+contract uSwapp {
+    string public name = "uSwapp";
+    uint256 public swapsCount = 0;
+
+    address[] public addresses;
+    mapping(uint256 => Swap) public swaps;
+
+    struct Swap {
+        uint256 id;
+        string title;
+        string description;
+        uint256 ammount;
+        address contractor;
+        address creator;
+        bool doneContractor;
+        bool doneCreator;
+        bool done;
+    }
+
+    constructor() public {}
+
+    event SwapCreated(
+        uint256 id,
+        string title,
+        string description,
+        uint256 ammount,
+        address contractor,
+        address creator,
+        bool doneContractor,
+        bool doneCreator,
+        bool done
+    );
+
+    // Create a new contract
+    function createNewSwap(
+        string memory _title,
+        string memory _description,
+        uint256 _amount,
+        address _contractor
+    ) public {
+        require(_amount > 0, "amount cannot be 0");
+        // check validity of swap info
+        require(bytes(_title).length != 0);
+        require(bytes(_description).length != 0);
+        // Check that contract address exists
+        require(_contractor != address(0));
+        // Make sure uploader address exists
+        require(msg.sender != address(0));
+
+        swapsCount++;
+        swaps[swapsCount] = Swap(
+            swapsCount,
+            _title,
+            _description,
+            _amount,
+            _contractor,
+            msg.sender,
+            false,
+            false,
+            false
+        );
+        // emit event
+        emit SwapCreated(
+            swapsCount,
+            _title,
+            _description,
+            _amount,
+            _contractor,
+            msg.sender,
+            false,
+            false,
+            false
+        );
+    }
+
+    // Both parties check the list on done
+    function checkValidity(uint256 _swapId) public {
+        // Check that the sender belong two the contract
+        require(
+            msg.sender == swaps[_swapId].contractor ||
+                msg.sender == swaps[_swapId].creator
+        );
+        // check if is the contractor
+        if (msg.sender == swaps[_swapId].contractor) {
+            swaps[_swapId].doneContractor = true;
+        }
+        // Check if is the creator
+        if (msg.sender == swaps[_swapId].creator) {
+            swaps[_swapId].doneCreator = true;
+        }
+        // If both are check are check mark done the contract
+        if (
+            swaps[_swapId].doneCreator == true &&
+            swaps[_swapId].doneContractor == true
+        ) {
+            swaps[_swapId].done == true;
+        }
+    }
+
+    // Introduce tokens to the contract
+    // Set other user contract
+
+    // Transfer token if the job is done
+}
