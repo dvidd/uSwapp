@@ -5,6 +5,30 @@ contract uSwapp {
     uint256 public swapsCount = 0;
 
     address[] public addresses;
+
+    // Set user
+    mapping(address => User) public users;
+
+    // Creat user
+    function createUser(string memory _username) public {
+        require(bytes(_username).length != 0);
+        // Make sure uploader address exists
+        require(msg.sender != address(0));
+        User storage user = users[msg.sender];
+        // Check that the user did not already exist:
+        require(!user.set);
+        //Store the user
+        users[msg.sender] = User({username: _username, set: true});
+        emit userCreated(msg.sender, _username);
+    }
+
+    event userCreated(address userAddress, string username);
+
+    struct User {
+        string username;
+        bool set; // This boolean is used to differentiate between unset and zero struct values
+    }
+
     mapping(uint256 => Swap) public swaps;
 
     struct Swap {
