@@ -22,13 +22,17 @@ class Navbar extends Component {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
+              <a class="nav-link" href="/explore">
+                Explore <span class="sr-only"></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                Link
+              <a
+                class="nav-link"
+                target="_blank"
+                href="https://github.com/uswapp"
+              >
+                Github
               </a>
             </li>
           </ul>
@@ -52,6 +56,9 @@ class Navbar extends Component {
                 <a>Connect wallet</a>
               </button>
             )}
+            <button class="btn btn-dark tools">
+              <ion-icon size="medium" name="cog"></ion-icon>
+            </button>
           </form>
         </div>
       </nav>
