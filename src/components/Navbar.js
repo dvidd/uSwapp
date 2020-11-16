@@ -5,7 +5,7 @@ class Navbar extends Component {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-          🌍 &nbsp; <b>Uswapp</b>
+          🦄 &nbsp; <b>Uswapp</b>
         </a>
         <button
           class="navbar-toggler"
@@ -37,9 +37,9 @@ class Navbar extends Component {
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <div className="text-secondary">
+            <small className="text-secondary">
               <small id="account">{this.props.account}</small>
-            </div>
+            </small>
             {this.props.account ? (
               <img
                 className="ml-2"
