@@ -18,24 +18,48 @@ class Main extends Component {
                     </label>
                     <span className="float-right">Balance : 2.23 eth </span>
                   </div>
-                  <div className="input-group mb-4">
-                    <input
-                      type="text"
-                      ref={input => {
-                        this.input = input;
-                      }}
-                      className="form-control form-control-lg"
-                      placeholder="0"
-                      required
-                    />
-                    <div className="input-group-append">
-                      <div className="input-group-text">
-                        &nbsp;&nbsp;&nbsp; Tokens
-                      </div>
-                    </div>
-                  </div>
+                  <input
+                    type="number"
+                    ref={input => {
+                      this.input = input;
+                    }}
+                    className="form-control form-control-lg"
+                    placeholder="0"
+                    required
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    ref={input => {
+                      this.input = input;
+                    }}
+                    className="form-control form-control-lg"
+                    placeholder="@ or address of compensate"
+                    required
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    ref={input => {
+                      this.input = input;
+                    }}
+                    className="form-control form-control-lg"
+                    placeholder="Title of swap"
+                    required
+                  />
+                  <br />
+                  <textarea
+                    type="text"
+                    ref={input => {
+                      this.input = input;
+                    }}
+                    className="form-control form-control-lg"
+                    placeholder="Description of swap to be made"
+                    required
+                  />
+                  <br />
                   <button class="btn btn-primary">
-                    <a>Connect wallet</a>
+                    <a>Confirm swapp</a>
                   </button>
                 </form>
               </div>

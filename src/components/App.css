@@ -18,6 +18,9 @@ body {
 .navbar-brand {
   color: #fff !important;
 }
+.navbar img {
+  width: 30px;
+}
 .nav-link {
   font-family: "Inter var", sans-serif;
   margin-left: 30px;
@@ -67,11 +70,13 @@ body {
     rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
 }
 
-input {
+input,
+textarea {
   background: transparent !important;
   border: 1px solid #363636;
   outline: none !important;
   box-shadow: none !important;
+  color: #fff !important;
 }
 input:focus,
 input:before,
