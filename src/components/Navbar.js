@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Identicon from "identicon.js";
+import Web3 from "web3";
+
 class Navbar extends Component {
+  clearWallet() {
+    Web3.eth.accounts.wallet.clear();
+  }
+
   render() {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,6 +41,10 @@ class Navbar extends Component {
                 Github
               </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link">About</a>
+            </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <div className="text-secondary">
@@ -57,7 +67,11 @@ class Navbar extends Component {
               </button>
             )}
             <button class="btn btn-dark tools">
-              <ion-icon size="medium" name="cog"></ion-icon>
+              <ion-icon
+                onPress={() => this.clearWallet()}
+                size="medium"
+                name="cog"
+              ></ion-icon>
             </button>
           </form>
         </div>
