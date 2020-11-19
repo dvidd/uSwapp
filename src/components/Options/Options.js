@@ -23,11 +23,13 @@ class Options extends Component {
   };
   handleClickOutside() {
     if (this.state.options === true) {
-      this.setState({ options: false });
+      setTimeout(() => {
+        this.setState({ options: false });
+      }, 200);
     }
   }
   handleDisplay() {
-    this.setState({ options: !this.state.options });
+    this.setState({ options: true });
   }
   render() {
     return (
@@ -42,12 +44,12 @@ class Options extends Component {
             </a>
           </div>
           <div class="element">
-            <a>
+            <a href="https://github.com/uswapp" target="_blank">
               <ion-icon name="logo-github"></ion-icon> Code
             </a>
           </div>
           <div class="element">
-            <a>
+            <a href="https://twitter.com/uSwapp" target="_blank">
               <ion-icon name="logo-twitter"></ion-icon> Twitter
             </a>
           </div>
