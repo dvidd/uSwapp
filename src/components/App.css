@@ -1,5 +1,10 @@
+:root {
+  --color-text: black;
+  --color-background: #2c2f36;
+}
+
 body {
-  background-color: #2c2f36;
+  background-color: var(--color-background);
   background-image: radial-gradient(
     50% 50% at 50% 50%,
     rgba(168, 204, 255, 0.1) 0%,
@@ -9,6 +14,8 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
 }
+
+/* Navbar  */
 .navbar {
   background: transparent !important;
   border-bottom: 0.1px solid #363636;
@@ -63,9 +70,10 @@ body {
   border-radius: 10px;
   height: 40px;
 }
+/* Card  */
 .card {
   border-radius: 20px;
-  background-color: #2c2f36;
+  background-color: var(--color-background);
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
     rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
@@ -108,7 +116,7 @@ input:hover {
   margin-top: 10%;
   animation: spin 1.5s linear infinite;
 }
-
+/* Options  */
 .options {
   min-width: 8.125rem;
   background-color: rgb(64, 68, 79);
@@ -134,8 +142,32 @@ input:hover {
   cursor: pointer;
   font-size: 16px;
   padding: 0.1rem;
+  color: rgb(195, 197, 203);
+  display: inline-block;
+  vertical-align: middle;
+}
+.options a:hover {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }
 .options ion-icon {
   font-size: 18px;
-  padding-top: 2px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Card info  */
+.cardInfo {
+  max-width: 200px;
+  position: absolute;
+  color: var(--color-background);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
+    rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
+  bottom: 10px;
+  background-color: #fff;
+}
+.cardInfo p {
+  padding: 10px;
+  font-size: 14px;
 }

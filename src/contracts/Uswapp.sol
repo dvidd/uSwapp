@@ -6,6 +6,8 @@ contract uSwapp {
 
     address[] public addresses;
 
+    constructor() public {}
+
     // Set user
     mapping(address => User) public users;
 
@@ -43,8 +45,6 @@ contract uSwapp {
         bool done;
     }
 
-    constructor() public {}
-
     event SwapCreated(
         uint256 id,
         string title,
@@ -59,6 +59,8 @@ contract uSwapp {
 
     // Create a new contract
     // Todo Widhtdraw the ammount for the contract
+    function storeETH() public payable {}
+
     // Think obout how is making the contract and how we could do it so it works
     // In boths ways
     function createNewSwap(
