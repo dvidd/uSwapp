@@ -20,6 +20,7 @@ body {
 }
 .navbar img {
   width: 30px;
+  height: auto;
 }
 .nav-link {
   font-family: "Inter var", sans-serif;
@@ -83,4 +84,58 @@ input:before,
 input:hover {
   outline: none !important;
   box-shadow: none !important;
+}
+
+/* Loader  */
+
+.loader {
+  width: 100%;
+  height: 100%;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.loader img {
+  width: 5%;
+  max-width: 40px;
+  margin-left: 47.5%;
+  margin-top: 10%;
+  animation: spin 1.5s linear infinite;
+}
+
+.options {
+  min-width: 8.125rem;
+  background-color: rgb(64, 68, 79);
+  box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
+    rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  position: absolute;
+  top: 4rem;
+  right: 1rem;
+  z-index: 100;
+}
+.options .element {
+  flex: 1 1 0%;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: rgb(195, 197, 203);
+}
+.options a {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0.1rem;
+}
+.options ion-icon {
+  font-size: 18px;
+  padding-top: 2px;
 }
