@@ -1,17 +1,41 @@
 import React, { Component } from "react";
 import Identicon from "identicon.js";
+
 import Web3 from "web3";
 
 class Navbar extends Component {
-  disconectwallet() {
-    Web3.eth.accounts.wallet.clear();
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: false
+    };
+    this.inputRef = React.createRef();
   }
-
+  componentWillMount() {
+    document.addEventListener("mousedown", this.handleClick, false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClick, false);
+  }
+  handleClick = e => {
+    /*Validating click is made inside a component*/
+    if (this.inputRef.current === e.target) {
+      return;
+    }
+    this.handleClickOutside();
+  };
+  handleClickOutside() {
+    /*code to handle what to do when clicked outside*/
+    this.changeOptions();
+  }
+  changeOptions() {
+    this.setState({ options: !this.state.options });
+  }
   render() {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-          <img src={require("../assets/Uswapp.png")} /> &nbsp; <b>Uswapp</b>
+          <img src={require("../assets/Uswapp.png")} /> &nbsp; <b>uSwapp</b>
         </a>
         <button
           class="navbar-toggler"
@@ -45,7 +69,7 @@ class Navbar extends Component {
               <a class="nav-link">About</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <div class="form-inline my-2 my-lg-0">
             <div className="text-secondary">
               <small id="account">{this.props.account}</small>
             </div>
@@ -65,14 +89,32 @@ class Navbar extends Component {
                 <a>Connect wallet</a>
               </button>
             )}
-            <button class="btn btn-dark tools">
-              <ion-icon
-                onPress={() => this.clearWallet()}
-                size="medium"
-                name="cog"
-              ></ion-icon>
-            </button>
-          </form>
+            <div>
+              <button class="btn btn-dark tools">
+                <ion-icon size="medium" name="cog"></ion-icon>
+              </button>
+              <span
+                ref={this.inputRef}
+                className={this.state.options ? "options" : "d-none"}
+              >
+                <div class="element">
+                  <a>
+                    <ion-icon name="newspaper-outline"></ion-icon> About
+                  </a>
+                </div>
+                <div class="element">
+                  <a>
+                    <ion-icon name="logo-github"></ion-icon> Code
+                  </a>
+                </div>
+                <div class="element">
+                  <a>
+                    <ion-icon name="logo-twitter"></ion-icon> Twitter
+                  </a>
+                </div>
+              </span>
+            </div>
+          </div>
         </div>
       </nav>
     );
