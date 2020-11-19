@@ -3,7 +3,7 @@ import Identicon from "identicon.js";
 import Web3 from "web3";
 
 class Navbar extends Component {
-  clearWallet() {
+  disconectwallet() {
     Web3.eth.accounts.wallet.clear();
   }
 
