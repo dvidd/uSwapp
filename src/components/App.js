@@ -1,13 +1,25 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Main from "./Main";
+
+import uSwapp from "../abis/uSwapp.json";
+
 import Web3 from "web3";
+
 import "./App.css";
 
 class App extends Component {
   async componentWillMount() {
     await this.loadWeb3();
-    this.loadBlockchainData();
+    await this.loadBlockchainData();
+    this.getbalance();
+  }
+
+  getbalance() {
+    window.web3.eth.getBalance(this.state.account, (err, balance) => {
+      balance = window.web3.utils.fromWei(balance, "ether") + " ETH";
+      this.setState({ balance: balance });
+    });
   }
 
   async loadWeb3() {
@@ -17,7 +29,7 @@ class App extends Component {
     } else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
     } else {
-      window.alert(
+      console.log(
         "Non-Ethereum browser detected. You should consider trying MetaMask!"
       );
     }
@@ -30,13 +42,25 @@ class App extends Component {
       this.setState({ account: accounts[0] });
       // Network ID
       const networkId = await web3.eth.net.getId();
+
+      // Load Uswapp
+      // const uSwappData = uSwapp.networks[networkId];
+      // if (uSwappData) {
+      //   const uSwapp = new web3.eth.Contract(uSwapp.abi, uSwappData.address);
+      //   this.setState({ uSwapp });
+      // } else {
+      //   // window.alert("Uswapp contract not deployed to  network.");
+      // }
     }
+    this.setState({ loading: false });
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+      loading: true,
+      uSwapp: {},
+      balance: 0
     };
   }
 
@@ -45,11 +69,11 @@ class App extends Component {
       <div>
         <Navbar account={this.state.account} />
         {this.state.loading ? (
-          <div id="loader" className="text-center mt-5">
-            <p>Loading...</p>
+          <div class="loader">
+            <img src={require("../assets/Uswapp.png")} />
           </div>
         ) : (
-          <Main />
+          <Main balance={this.state.balance} />
         )}
       </div>
     );
