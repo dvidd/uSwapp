@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ammount: 0,
+      addres: 0x0,
+      balance: 1,
+      title: "",
+      description: ""
+    };
+  }
+
   render() {
     return (
       <div className="container-fluid mt-5">
@@ -16,7 +27,9 @@ class Main extends Component {
                     <label className="float-left">
                       <b>Start swapp</b>
                     </label>
-                    <span className="float-right">Balance : 2.23 eth </span>
+                    <span className="float-right">
+                      Balance : {this.props.balance}
+                    </span>
                   </div>
                   <input
                     type="number"
@@ -61,6 +74,7 @@ class Main extends Component {
                   <button class="btn btn-primary">
                     <a>Confirm swapp</a>
                   </button>
+                  <div class="invalid-feedback">Insufficient funds</div>
                 </form>
               </div>
             </div>
