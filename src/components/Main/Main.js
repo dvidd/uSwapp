@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "../Shared/Button";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +26,7 @@ class Main extends Component {
                 <form className="mb-3">
                   <div>
                     <label className="float-left">
-                      <b>Start swapp</b>
+                      <b>Start Swap</b>
                     </label>
                     <span className="float-right">
                       Balance : {this.props.balance}
@@ -57,7 +58,7 @@ class Main extends Component {
                       this.input = input;
                     }}
                     className="form-control form-control-lg"
-                    placeholder="Title of swap"
+                    placeholder="Title of Swap"
                     required
                   />
                   <br />
@@ -71,9 +72,7 @@ class Main extends Component {
                     required
                   />
                   <br />
-                  <button class="btn btn-primary">
-                    <a>Confirm swapp</a>
-                  </button>
+                  <Button text={"Confirm text"}></Button>
                   <div class="invalid-feedback">Insufficient funds</div>
                 </form>
               </div>

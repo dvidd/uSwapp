@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar/Navbar";
-import Main from "./Main";
+import Main from "./Main/Main";
 
 import uSwapp from "../abis/uSwapp.json";
 

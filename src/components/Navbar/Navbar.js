@@ -4,6 +4,7 @@ import Identicon from "identicon.js";
 import Options from "../Options/Options";
 
 import logo from "../../assets/Uswapp.png";
+import Button from "../Shared/Button";
 
 class Navbar extends Component {
   render() {
@@ -60,9 +61,7 @@ class Navbar extends Component {
                 alt=""
               />
             ) : (
-              <button class="btn btn-primary">
-                <a>Connect wallet</a>
-              </button>
+              <Button text="Connect wallet" />
             )}
             <Options></Options>
           </div>
