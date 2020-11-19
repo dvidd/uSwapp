@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 import Main from "./Main";
 
 import uSwapp from "../abis/uSwapp.json";
@@ -7,7 +7,7 @@ import uSwapp from "../abis/uSwapp.json";
 import Web3 from "web3";
 
 import "./App.css";
-
+import Loader from "./Shared/Loader";
 class App extends Component {
   async componentWillMount() {
     await this.loadWeb3();
@@ -69,9 +69,7 @@ class App extends Component {
       <div>
         <Navbar account={this.state.account} />
         {this.state.loading ? (
-          <div class="loader">
-            <img src={require("../assets/Uswapp.png")} />
-          </div>
+          <Loader></Loader>
         ) : (
           <Main balance={this.state.balance} />
         )}
