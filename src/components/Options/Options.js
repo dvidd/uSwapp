@@ -22,22 +22,20 @@ class Options extends Component {
     this.handleClickOutside();
   };
   handleClickOutside() {
-    /*code to handle what to do when clicked outside*/
-    this.changeOptions();
+    if (this.state.options === true) {
+      this.setState({ options: false });
+    }
   }
-  changeOptions() {
+  handleDisplay() {
     this.setState({ options: !this.state.options });
   }
   render() {
     return (
-      <div>
+      <div ref={this.inputRef} onClick={() => this.handleDisplay()}>
         <button class="btn btn-dark tools">
           <ion-icon size="medium" name="cog"></ion-icon>
         </button>
-        <span
-          ref={this.inputRef}
-          className={this.state.options ? "options" : "d-none"}
-        >
+        <span className={this.state.options ? "options" : "d-none"}>
           <div class="element">
             <a>
               <ion-icon name="newspaper-outline"></ion-icon> About
