@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import SmallButton from "../Shared/SmallButton";
+
 class Options extends Component {
   constructor(props) {
     super(props);
@@ -34,9 +36,7 @@ class Options extends Component {
   render() {
     return (
       <div ref={this.inputRef} onClick={() => this.handleDisplay()}>
-        <button class="btn btn-dark tools">
-          <ion-icon size="medium" name="cog"></ion-icon>
-        </button>
+        <SmallButton name={"cog"}></SmallButton>
         <span className={this.state.options ? "options" : "d-none"}>
           <div class="element">
             <a>
