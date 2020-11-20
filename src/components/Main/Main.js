@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Info from "../Shared/Info";
 import Card from "../Card/Card";
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class Main extends Component {
     return (
       <div className="container-fluid mt-5">
         <Info></Info>
-        <Card></Card>
+        <Card balance={this.props.balance}></Card>
       </div>
     );
   }
