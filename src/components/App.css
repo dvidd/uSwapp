@@ -158,16 +158,23 @@ input:hover {
 
 /* Card info  */
 .cardInfo {
-  max-width: 200px;
+  width: 200px;
   position: absolute;
   color: var(--color-background);
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
-    rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
+  border-radius: 15px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 1px, rgba(0, 0, 0, 0.04) !important;
   bottom: 10px;
-  background-color: #fff;
+  color: #5399ff;
+  background-color: #1a304a !important;
+  border: 1px solid rgba(49, 95, 154, 0.44);
 }
 .cardInfo p {
   padding: 10px;
   font-size: 14px;
+  font-weight: 500;
+  padding-top: 15px;
+}
+.cardInfoContainer li {
+  display: inline;
+  white-space: nowrap !important;
 }
