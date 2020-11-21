@@ -4,9 +4,18 @@ contract uSwapp {
     string public name = "uSwapp";
     uint256 public swapsCount = 0;
 
+    address payable public owner;
+
     address[] public addresses;
 
-    constructor() public {}
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    // Get contract balance
+    function getBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
 
     // Set user
     mapping(address => User) public users;
@@ -68,7 +77,7 @@ contract uSwapp {
         string memory _description,
         uint256 _amount,
         address _contractor
-    ) public {
+    ) public payable {
         require(_amount > 0, "amount cannot be 0");
         // check validity of swap info
         require(bytes(_title).length != 0);

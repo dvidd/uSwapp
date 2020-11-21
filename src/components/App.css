@@ -14,7 +14,14 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
 }
-
+h1,
+h2,
+h3,
+h4,
+th,
+tr {
+  color: #fff;
+}
 /* Navbar  */
 .navbar {
   background: transparent !important;
@@ -177,4 +184,10 @@ input:hover {
 .cardInfoContainer li {
   display: inline;
   white-space: nowrap !important;
+}
+/* List  */
+.table {
+  border-radius: 25px !important;
+  border-width: 1px !important;
+  border-style: solid !important;
 }
