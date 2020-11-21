@@ -15,7 +15,11 @@ class Info extends Component {
       display: true
     };
     setInterval(() => {
-      this.setState({ onSlide: this.state.onSlide + 1 });
+      if (this.state.onSlide != this.slides.length) {
+        this.setState({ onSlide: this.state.onSlide + 1 });
+      } else {
+        this.setState({ onSlide: 0 });
+      }
     }, 5000);
   }
 
