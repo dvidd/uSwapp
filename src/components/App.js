@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 
-import uSwapp from "../abis/uSwapp.json";
+import USwapp from "../abis/uSwapp.json";
 
 import Web3 from "web3";
 
 import "./App.css";
 import Loader from "./Shared/Loader";
+
 class App extends Component {
   async componentWillMount() {
     await this.loadWeb3();
     await this.loadBlockchainData();
-    this.getbalance();
   }
 
   getbalance() {
@@ -35,32 +35,43 @@ class App extends Component {
     }
   }
   async loadBlockchainData() {
-    if (window.ethereum) {
-      const web3 = new Web3(window.web3.currentProvider);
-      // Load account
-      const accounts = await web3.eth.getAccounts();
-      this.setState({ account: accounts[0] });
-      // Network ID
-      const networkId = await web3.eth.net.getId();
+    const web3 = window.web3;
 
-      // Load Uswapp
-      // const uSwappData = uSwapp.networks[networkId];
-      // if (uSwappData) {
-      //   const uSwapp = new web3.eth.Contract(uSwapp.abi, uSwappData.address);
-      //   this.setState({ uSwapp });
-      // } else {
-      //   // window.alert("Uswapp contract not deployed to  network.");
-      // }
+    const accounts = await web3.eth.getAccounts();
+    this.setState({ account: accounts[0] });
+
+    const networkId = await web3.eth.net.getId();
+
+    // Load uSwapp
+    const uSwappData = USwapp.networks[networkId];
+    if (uSwappData) {
+      const uSwapp = new web3.eth.Contract(USwapp.abi, uSwappData.address);
+      this.setState({ uSwapp });
+    } else {
+      window.alert("uSwapp contract not deployed to detected network.");
     }
+
+    this.getbalance();
     this.setState({ loading: false });
   }
+
+  createNewSwap = (_title, _description, _ammount, _toAddress) => {
+    this.setState({ loading: true });
+    this.state.uSwapp.methods
+      .createNewSwap(_title, _description, _ammount, _toAddress)
+      .send({ from: this.state.account })
+      .on("transactionHash", hash => {
+        this.setState({ loading: false });
+      });
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
       uSwapp: {},
-      balance: 0
+      balance: 0,
+      account: ""
     };
   }
 
@@ -71,7 +82,10 @@ class App extends Component {
         {this.state.loading ? (
           <Loader></Loader>
         ) : (
-          <Main balance={this.state.balance} />
+          <Main
+            createNewSwap={this.createNewSwap}
+            balance={this.state.balance}
+          />
         )}
       </div>
     );
