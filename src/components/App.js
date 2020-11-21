@@ -35,23 +35,25 @@ class App extends Component {
     }
   }
   async loadBlockchainData() {
-    const web3 = window.web3;
+    if (window.ethereum) {
+      const web3 = window.web3;
 
-    const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts[0] });
+      const accounts = await web3.eth.getAccounts();
+      this.setState({ account: accounts[0] });
 
-    const networkId = await web3.eth.net.getId();
+      const networkId = await web3.eth.net.getId();
 
-    // Load uSwapp
-    const uSwappData = USwapp.networks[networkId];
-    if (uSwappData) {
-      const uSwapp = new web3.eth.Contract(USwapp.abi, uSwappData.address);
-      this.setState({ uSwapp });
-    } else {
-      window.alert("uSwapp contract not deployed to detected network.");
+      // Load uSwapp
+      const uSwappData = USwapp.networks[networkId];
+      if (uSwappData) {
+        const uSwapp = new web3.eth.Contract(USwapp.abi, uSwappData.address);
+        this.setState({ uSwapp });
+      } else {
+        window.alert("uSwapp contract not deployed to detected network.");
+      }
+
+      this.getbalance();
     }
-
-    this.getbalance();
     this.setState({ loading: false });
   }
 
