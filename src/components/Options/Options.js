@@ -38,19 +38,19 @@ class Options extends Component {
       <div ref={this.inputRef} onClick={() => this.handleDisplay()}>
         <SmallButton name={"cog"}></SmallButton>
         <span className={this.state.options ? "options" : "d-none"}>
-          <div class="element">
-            <a>
-              <ion-icon name="newspaper-outline"></ion-icon> About
-            </a>
-          </div>
-          <div class="element">
+          <div className="element">
             <a href="https://github.com/uswapp" target="_blank">
               <ion-icon name="logo-github"></ion-icon> Code
             </a>
           </div>
-          <div class="element">
+          <div className="element">
             <a href="https://twitter.com/uSwapp" target="_blank">
               <ion-icon name="logo-twitter"></ion-icon> Twitter
+            </a>
+          </div>
+          <div className="element">
+            <a href="https://twitter.com/dviddb" target="_blank">
+              <ion-icon name="logo-twitter"></ion-icon> @dviddb
             </a>
           </div>
         </span>

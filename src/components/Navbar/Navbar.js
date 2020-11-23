@@ -9,12 +9,12 @@ import Button from "../Shared/Button";
 class Navbar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">
           <img src={logo} /> &nbsp; <b>uSwapp</b>
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"
@@ -22,11 +22,11 @@ class Navbar extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mr-auto"></ul>
-          <div class="form-inline my-2 my-lg-0 ">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav mr-auto"></ul>
+          <div className="form-inline my-2 my-lg-0 ">
             <div className="text-secondary mr-auto">
               <small id="account ">{this.props.account}</small>
             </div>

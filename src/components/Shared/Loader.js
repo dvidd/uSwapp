@@ -5,7 +5,7 @@ import Logo from "../../assets/Uswapp.png";
 class Loader extends Component {
   render() {
     return (
-      <div class="loader">
+      <div className="loader">
         <img src={Logo} />
       </div>
     );

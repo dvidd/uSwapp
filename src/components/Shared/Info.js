@@ -16,8 +16,8 @@ class Info extends Component {
   render() {
     if (this.state.onSlide < this.slides.length) {
       return (
-        <div class="cardInfo">
-          <div class="container cardInfoContainer">
+        <div className="cardInfo">
+          <div className="container cardInfoContainer">
             <p>
               {this.slides[0]}
               <br />
