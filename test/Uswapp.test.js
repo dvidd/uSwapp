@@ -29,17 +29,11 @@ contract("uSwapp", ([deployer, contractor]) => {
   describe("swaps", async () => {
     let result, swapsCount;
 
-    const title = "Trade of work";
     const description = "Trade work to do a contracting for working on project";
     const ammount = 100;
 
     before(async () => {
-      result = await uswapp.createNewSwap(
-        title,
-        description,
-        ammount,
-        contractor
-      );
+      result = await uswapp.createNewSwap(description, ammount, contractor);
       swapsCount = await uswapp.swapsCount();
     });
 
@@ -52,7 +46,6 @@ contract("uSwapp", ([deployer, contractor]) => {
       assert.equal(event.id.toNumber(), swapsCount.toNumber(), "id is correct");
 
       // data of the function
-      assert.equal(event.title, title, "Title is correct");
       assert.equal(event.description, description, "Description is correct");
       assert.equal(event.ammount, ammount, "Ammont is correct");
       assert.equal(event.contractor, contractor, "Contractor is correct");
@@ -63,13 +56,8 @@ contract("uSwapp", ([deployer, contractor]) => {
       assert.equal(event.doneCreator, false, "doneCreator is correct");
       assert.equal(event.done, false, "done is correct");
 
-      // Must have title
-      await uswapp.createNewSwap("", description, ammount, contractor).should.be
-        .rejected;
-
       // Must have description
-      await uswapp.createNewSwap(title, "", ammount, contractor).should.be
-        .rejected;
+      await uswapp.createNewSwap("", ammount, contractor).should.be.rejected;
     });
 
     //check from Struct
@@ -78,7 +66,6 @@ contract("uSwapp", ([deployer, contractor]) => {
       assert.equal(swap.id.toNumber(), swapsCount.toNumber(), "id is correct");
 
       // data of the function
-      assert.equal(swap.title, title, "Title is correct");
       assert.equal(swap.description, description, "Description is correct");
       assert.equal(swap.ammount, ammount, "Ammont is correct");
       assert.equal(swap.contractor, contractor, "Contractor is correct");
