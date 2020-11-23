@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import BigButton from "../Shared/Button";
+
+// import { useParams } from "react-router-dom";
 
 class Button extends Component {
   render() {
@@ -11,13 +12,29 @@ class Button extends Component {
               <label className="float-left">
                 <b>Swap</b>
               </label>
+              <h2 className="text-center" width="100%">
+                {this.props.swap} ETH
+              </h2>
+              <br />
+              <div className="row">
+                <div className="col-5 addressSwap">
+                  <label>From :</label>
+                  <br />
+                  <p>{this.props.creator}</p>
+                </div>
+                <div className="col-2 text-center arrowSwap">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </div>
+                <div className="col-5 addressSwap">
+                  <label>To :</label> <br />
+                  <p>{this.props.contractor}</p>
+                </div>
+              </div>
+              <p>{this.props.description}</p>
             </div>
             <br />
             <br />
             <br />
-            <div onClick={() => this.createNewSwap()}>
-              <BigButton text={"Confirm Swapp"}></BigButton>
-            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 :root {
   --color-text: black;
   --color-background: #2c2f36;
+  --color-primary: #5399ff;
 }
 
 body {
@@ -43,7 +44,7 @@ tr {
 }
 
 .btn-primary {
-  color: #5399ff;
+  color: var(--color-primary);
   background-color: #1a304a;
   border: none;
   min-width: 200px;
@@ -54,7 +55,7 @@ tr {
 }
 .btn-primary:hover,
 .btn-primary:active {
-  color: #5399ff;
+  color: var(--color-primary);
   background-color: #1a304a !important;
   border: 1px solid rgba(49, 95, 154, 0.44);
   outline: none !important;
@@ -84,6 +85,18 @@ tr {
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px,
     rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px;
+}
+.card label {
+  font-weight: 300;
+  font-size: 20px;
+  font-family: "Inter var", sans-serif;
+}
+.changeCardtext {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 input,
@@ -171,7 +184,7 @@ input:hover {
   border-radius: 15px;
   box-shadow: rgb(255, 255, 255) 0px 0px 1px, rgba(0, 0, 0, 0.04) !important;
   bottom: 10px;
-  color: #5399ff;
+  color: var(--color-primary);
   background-color: #1a304a !important;
   border: 1px solid rgba(49, 95, 154, 0.44);
 }
@@ -190,4 +203,14 @@ input:hover {
   border-radius: 25px !important;
   border-width: 1px !important;
   border-style: solid !important;
+}
+/* Swapp  */
+
+.arrowSwap {
+  font-size: 39px;
+}
+.addressSwap p {
+  font-size: 16px;
+  color: var(--color-primary);
+  width: 100%;
 }
