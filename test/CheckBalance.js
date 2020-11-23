@@ -6,3 +6,4 @@ module.exports = async function(callback) {
   console.log(balance);
   callback();
 };
+// truffle exec test/CheckBalance.js
