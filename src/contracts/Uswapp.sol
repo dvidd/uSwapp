@@ -55,7 +55,6 @@ contract uSwapp {
 
     struct Swap {
         uint256 id;
-        string title;
         string description;
         uint256 ammount;
         address contractor;
@@ -67,7 +66,6 @@ contract uSwapp {
 
     event SwapCreated(
         uint256 id,
-        string title,
         string description,
         uint256 ammount,
         address contractor,
@@ -84,14 +82,13 @@ contract uSwapp {
     // Think obout how is making the contract and how we could do it so it works
     // In boths ways
     function createNewSwap(
-        string memory _title,
         string memory _description,
         uint256 _amount,
         address _contractor
     ) public payable {
         require(_amount > 0, "amount cannot be 0");
         // check validity of swap info
-        require(bytes(_title).length != 0);
+
         require(bytes(_description).length != 0);
         // Check that contract address exists
         require(_contractor != address(0));
@@ -101,7 +98,6 @@ contract uSwapp {
         swapsCount++;
         swaps[swapsCount] = Swap(
             swapsCount,
-            _title,
             _description,
             _amount,
             _contractor,
@@ -113,7 +109,6 @@ contract uSwapp {
         // emit event
         emit SwapCreated(
             swapsCount,
-            _title,
             _description,
             _amount,
             _contractor,
