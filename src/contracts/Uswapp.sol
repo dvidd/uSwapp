@@ -5,10 +5,16 @@ contract uSwapp {
     uint256 public swapsCount = 0;
 
     address payable public owner;
+    address payable public recipient; // The account receiving the payments.
+
+    // Set user
+    mapping(address => User) public users;
 
     address[] public addresses;
 
-    constructor() public {
+    mapping(uint256 => Swap) public swaps;
+
+    constructor(address payable _recipient) public {
         owner = msg.sender;
     }
 
@@ -17,8 +23,15 @@ contract uSwapp {
         return address(this).balance;
     }
 
-    // Set user
-    mapping(address => User) public users;
+    // Deposit into the contract
+    function deposit(uint256 amount) public payable {
+        require(msg.value == amount);
+        // nothing else to do!
+    }
+
+    function withdraw(uint256 ammount) public {
+        recipient.transfer(ammount);
+    }
 
     // Creat user
     function createUser(string memory _username) public {
@@ -39,8 +52,6 @@ contract uSwapp {
         string username;
         bool set; // This boolean is used to differentiate between unset and zero struct values
     }
-
-    mapping(uint256 => Swap) public swaps;
 
     struct Swap {
         uint256 id;
@@ -134,6 +145,8 @@ contract uSwapp {
             swaps[_swapId].doneContractor == true
         ) {
             swaps[_swapId].done == true;
+            // Withdraw the ammount to the reciver wich is specify in the constructor of the contract
+            withdraw(swaps[_swapId].ammount);
         }
     }
 
