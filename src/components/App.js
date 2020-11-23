@@ -65,6 +65,13 @@ class App extends Component {
       .on("transactionHash", hash => {
         this.setState({ loading: false });
       });
+    this.getSwap(0);
+  };
+
+  // Get swap information
+  createNewSwap = _swapId => {
+    const swap = this.state.uSwapp.methods.swaps(_swapId).call();
+    return swap;
   };
 
   constructor(props) {
@@ -85,6 +92,7 @@ class App extends Component {
           <Loader></Loader>
         ) : (
           <Main
+            getSwap={this.getSwap}
             createNewSwap={this.createNewSwap}
             balance={this.state.balance}
           />
