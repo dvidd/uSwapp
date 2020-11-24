@@ -19,20 +19,20 @@ class Info extends Component {
   }
 
   createNewSwap() {
-    this.errors();
     if (
-      this.state.notValidAddress === false ||
-      this.state.notValidAmmount === false ||
-      this.state.notValidDescription === false ||
-      this.state.touch === false
+      this.state.notValidAddress === false &&
+      this.state.notValidAmmount === false &&
+      this.state.notValidDescription === false &&
+      this.state.touch === true
     ) {
-      // Errors
-    } else {
       this.props.createNewSwap(
         this.state.description,
         this.state.ammount,
         this.state.toAddress
       );
+    } else {
+      // Errors
+      this.errors();
     }
   }
   handleChange(evt) {
