@@ -39,17 +39,29 @@ class Options extends Component {
         <SmallButton name={"cog"}></SmallButton>
         <span className={this.state.options ? "options" : "d-none"}>
           <div className="element">
-            <a href="https://github.com/dvidd/uSwapp" target="_blank">
+            <a
+              href="https://github.com/dvidd/uSwapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ion-icon name="logo-github"></ion-icon> Code
             </a>
           </div>
           <div className="element">
-            <a href="https://twitter.com/uSwapp" target="_blank">
+            <a
+              href="https://twitter.com/uSwapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ion-icon name="logo-twitter"></ion-icon> Twitter
             </a>
           </div>
           <div className="element">
-            <a href="https://twitter.com/dviddb" target="_blank">
+            <a
+              href="https://twitter.com/dviddb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ion-icon name="logo-twitter"></ion-icon> @dviddb
             </a>
           </div>

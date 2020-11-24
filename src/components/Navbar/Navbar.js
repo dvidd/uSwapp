@@ -10,9 +10,9 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-          <img src={logo} /> &nbsp; <b>uSwapp</b>
-        </a>
+        <div className="navbar-brand" href="#">
+          <img src={logo} alt="uSwapp logo" /> &nbsp; <b>uSwapp</b>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -39,7 +39,7 @@ class Navbar extends Component {
                   this.props.account,
                   30
                 ).toString()}`}
-                alt=""
+                alt="User Identicon uSwapp"
               />
             ) : (
               <Button text="Connect wallet" />

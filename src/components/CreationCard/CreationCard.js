@@ -50,7 +50,7 @@ class Info extends Component {
       this.setState({ notValidAddress: false });
     }
     var ammount = this.state.ammount;
-    if (ammount == 0 || ammount < 0 || ammount === null) {
+    if (ammount === 0 || ammount < 0 || ammount === null) {
       this.setState({ notValidAmmount: true });
     } else {
       this.setState({ notValidAmmount: false });

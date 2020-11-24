@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-// import { useParams } from "react-router-dom";
-
 class Button extends Component {
   render() {
     return (
