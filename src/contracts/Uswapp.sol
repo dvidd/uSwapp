@@ -24,10 +24,10 @@ contract uSwapp {
     }
 
     // Deposit into the contract
-    // function deposit(uint256 amount) public payable {
-    //     require(msg.value == amount);
-    //     // nothing else to do!
-    // }
+    function deposit(uint256 amount) public payable {
+        require(msg.value == amount);
+        // nothing else to do!
+    }
 
     function withdraw(uint256 ammount) public {
         recipient.transfer(ammount);
