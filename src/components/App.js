@@ -72,7 +72,10 @@ class App extends Component {
     this.setState({ loading: true });
     this.state.uSwapp.methods
       .createNewSwap(_description, _ammount, _toAddress)
-      .send({ from: this.state.account })
+      .send({
+        from: this.state.account,
+        value: window.web3.utils.toWei(_ammount, "ether")
+      })
       .on("transactionHash", hash => {
         this.setState({ loading: false });
       });
@@ -82,9 +85,8 @@ class App extends Component {
 
   getSwap = async _swapId => {
     const swap = await this.state.uSwapp.methods.swaps(_swapId).call();
-    const dataSwap = JSON.stringify(swap);
-    console.log(dataSwap);
-    this.setState({ swap: dataSwap });
+    console.log(swap);
+    this.setState({ swap: swap });
   };
 
   render() {

@@ -79,6 +79,7 @@ class Main extends Component {
         </div>
         {/* element for changing between views  */}
         {this.returnCardChanger()}
+        <span>{this.props.latestID}</span>
       </div>
     );
   }

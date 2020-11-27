@@ -32,14 +32,19 @@ class Search extends Component {
     }, 1000);
   }
   getSwap() {
-    if (this.state.notValidId === false && this.state.touch === true) {
-      this.setState({ loading: true });
-      this.props.getSwap(this.state.id);
-      this.setState({ loading: false });
-    } else {
-      // Errors
-      this.errors();
-    }
+    this.errors();
+    this.setState({ loading: true });
+    setTimeout(() => {
+      if (this.state.notValidId === false) {
+        this.setState({ loading: true });
+        this.props.getSwap(this.state.id);
+        this.setState({ loading: false });
+      } else {
+        // Errors
+        this.errors();
+      }
+    }, 1000);
+    this.setState({ loading: false });
   }
   render() {
     return (
