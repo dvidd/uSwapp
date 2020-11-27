@@ -2,7 +2,7 @@ pragma solidity >=0.5.0;
 
 contract uSwapp {
     string public name = "uSwapp";
-    uint256 public swapsCount = 0;
+    uint256 public swapsCount = 1234;
 
     address payable public owner;
     address payable public recipient; // The account receiving the payments.
