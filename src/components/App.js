@@ -10,6 +10,17 @@ import "./App.css";
 import Loader from "./Shared/Loader";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      uSwapp: {},
+      balance: 0,
+      account: "",
+      latestID: 0
+    };
+  }
+
   async componentWillMount() {
     await this.loadWeb3();
     await this.loadBlockchainData();
@@ -65,25 +76,16 @@ class App extends Component {
       .on("transactionHash", hash => {
         this.setState({ loading: false });
       });
-    // this.getSwap(0);
   };
 
   // Get swap information
-  getSwap = _swapId => {
-    const swap = this.state.uSwapp.methods.swaps(_swapId).call();
-    alert(swap);
-    this.setState({ swap: swap });
-  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      uSwapp: {},
-      balance: 0,
-      account: ""
-    };
-  }
+  getSwap = async _swapId => {
+    const swap = await this.state.uSwapp.methods.swaps(_swapId).call();
+    const dataSwap = JSON.stringify(swap);
+    console.log(dataSwap);
+    this.setState({ swap: dataSwap });
+  };
 
   render() {
     return (
@@ -97,6 +99,7 @@ class App extends Component {
             getSwap={this.getSwap}
             createNewSwap={this.createNewSwap}
             balance={this.state.balance}
+            latestID={this.state.latestID}
           />
         )}
       </div>
