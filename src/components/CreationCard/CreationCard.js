@@ -61,8 +61,6 @@ class Info extends Component {
     } else {
       this.setState({ notValidDescription: false });
     }
-
-    // form error TODO
   }
   render() {
     return (
@@ -86,7 +84,7 @@ class Info extends Component {
               required
             />
             {this.state.notValidAmmount && this.state.touch && (
-              <div class="invalid-feedback d-block">
+              <div className="invalid-feedback d-block">
                 Please enter a valid ammount for the swap
               </div>
             )}
@@ -100,7 +98,7 @@ class Info extends Component {
               onChange={this.handleChange}
             />
             {this.state.notValidAddress && this.state.touch && (
-              <div class="invalid-feedback d-block">
+              <div className="invalid-feedback d-block">
                 Please enter a valid ETH address
               </div>
             )}
@@ -115,7 +113,7 @@ class Info extends Component {
               required
             />
             {this.state.notValidDescription && this.state.touch && (
-              <div class="invalid-feedback d-block">
+              <div className="invalid-feedback d-block">
                 Please enter a description for the swap
               </div>
             )}
