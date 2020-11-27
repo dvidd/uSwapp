@@ -7,6 +7,30 @@ class Button extends Component {
       swap: this.props.swap
     };
   }
+  // Check the status of the swap
+  getSwapStatus(swap) {
+    if (swap.done === true) {
+      return (
+        <span class="badge badge-pill badge-primary">
+          Swapp done aprove by sender
+        </span>
+      );
+    }
+    if (swap.doneContractor === true) {
+      return (
+        <span class="badge badge-pill badge-primary">
+          Swapp check as finish by reciver
+        </span>
+      );
+    }
+    if (
+      swap.doneCreator === false &&
+      swap.doneContractor === false &&
+      swap.done === false
+    ) {
+      return <span class="badge badge-pill badge-primary">In progress</span>;
+    }
+  }
   render() {
     return (
       <div className="card mb-4">
@@ -36,8 +60,14 @@ class Button extends Component {
               </div>
               <p>{this.props.swap.description}</p>
             </div>
-            <br />
-            <br />
+            <div className="row">
+              <div className="col-5">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+              <div className="col-2"></div>
+              <div className="col-5">{this.getSwapStatus(this.props.swap)}</div>
+            </div>
             <br />
           </div>
         </div>
