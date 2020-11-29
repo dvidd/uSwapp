@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import Info from "../Shared/Info";
 import CreationCard from "../CreationCard/CreationCard";
 import Swap from "../Swap/Swap";
 import SwapSearch from "../SwapSearch/SwapSearch";
@@ -10,7 +9,7 @@ class Main extends Component {
     super(props);
     this.state = {
       swapId: "",
-      create: true
+      create: false // for more quick develop in the interface (( take this offf ))
     };
   }
   changeCard() {
@@ -19,10 +18,14 @@ class Main extends Component {
 
   renderSwap() {
     const swap = this.props.swap;
-    if (swap !== undefined) {
+    if (swap !== undefined && swap !== null) {
       return (
         <div>
-          <Swap swap={swap} />
+          <Swap
+            account={this.props.account}
+            swap={swap}
+            validSwap={this.props.validSwap}
+          />
         </div>
       );
     }
@@ -66,7 +69,7 @@ class Main extends Component {
   render() {
     return (
       <div className="container-fluid mt-5">
-        <Info />
+        {/* <Info /> */}
         <div className="row">
           <div
             id="content mt-3"
