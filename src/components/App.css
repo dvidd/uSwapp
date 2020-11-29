@@ -2,6 +2,13 @@
   --color-text: black;
   --color-background: #2c2f36;
   --color-primary: #5399ff;
+  --border-color: rgba(21, 61, 111, 0.44);
+  --color-secondary: #1a304a;
+}
+
+.popUpAlert {
+  font-size: 20px !important;
+  padding: 0;
 }
 
 body {
@@ -44,20 +51,21 @@ tr {
 }
 
 .btn-primary {
+  cursor: pointer;
   color: var(--color-primary);
-  background-color: #1a304a;
+  background-color: var(--color-secondary);
   border: none;
   min-width: 200px;
   border-radius: 10px;
   font-size: 16px;
-  background-color: rgba(21, 61, 111, 0.44);
-  border: 1px solid rgba(21, 61, 111, 0.44);
+  background-color: var(--border-color);
+  border: 1px solid var(--border-color);
 }
 .btn-primary:hover,
 .btn-primary:active {
   color: var(--color-primary);
-  background-color: #1a304a !important;
-  border: 1px solid rgba(49, 95, 154, 0.44);
+  background-color: var(--color-secondary) !important;
+  border: 1px solid var(--border-color);
   outline: none !important;
   box-shadow: none;
 }
@@ -185,8 +193,8 @@ input:hover {
   box-shadow: rgb(255, 255, 255) 0px 0px 1px, rgba(0, 0, 0, 0.04) !important;
   bottom: 10px;
   color: var(--color-primary);
-  background-color: #1a304a !important;
-  border: 1px solid rgba(49, 95, 154, 0.44);
+  background-color: var(--color-secondary) !important;
+  border: 1px solid var(--border-color);
 }
 .cardInfo p {
   padding: 10px;
@@ -209,8 +217,44 @@ input:hover {
 .arrowSwap {
   font-size: 39px;
 }
-.addressSwap p {
-  font-size: 16px;
+.addressSwap a {
+  font-size: 18px;
   color: var(--color-primary);
   width: 100%;
+}
+/* Card of swap */
+.badge-primary {
+  padding: 10px !important;
+  background-color: var(--color-secondary) !important;
+  color: var(--color-primary);
+  border: 1px solid var(--border-color);
+}
+.validationButton ion-icon {
+  font-size: 20px;
+}
+.description {
+  white-space: pre-line;
+  margin-top: 20px;
+}
+
+.informativeText ion-icon {
+  margin-top: 0px;
+  font-size: 18px;
+  padding: 0.1rem;
+  color: rgb(195, 197, 203);
+  vertical-align: middle;
+  cursor: pointer;
+}
+.btn-primary ion-icon {
+  vertical-align: middle;
+}
+.informativeText a {
+  margin-top: 10px;
+  font-size: 10px;
+  color: rgb(195, 197, 203);
+  padding-top: 1px;
+  cursor: pointer;
+}
+.infoIcon:hover + #infoText {
+  display: block !important;
 }
