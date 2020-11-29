@@ -8,7 +8,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      create: false // for more quick develop in the interface (( take this offf ))
+      create: true // for more quick develop in the interface (( take this offf ))
     };
   }
   changeCard() {

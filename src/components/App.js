@@ -30,7 +30,8 @@ class App extends Component {
     if (walletInstall) {
       await this.loadWeb3();
       await this.loadBlockchainData();
-      this.getSwap(1235);
+      this.getbalance();
+      // this.getSwap(1235); For quick develop
     }
   }
   // Get the balance of the address account in Ether
@@ -91,7 +92,6 @@ class App extends Component {
     const swap = await this.state.uSwapp.methods.swaps(_swapId).call();
     console.log(swap);
     this.setState({ swap });
-    alert(_swapId);
   };
 
   // Confirm swap validity
