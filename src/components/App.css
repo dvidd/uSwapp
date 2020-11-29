@@ -258,3 +258,6 @@ input:hover {
 .infoIcon:hover + #infoText {
   display: block !important;
 }
+.swapId {
+  text-align: center !important;
+}

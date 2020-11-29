@@ -30,10 +30,10 @@ contract("uSwapp", ([deployer, contractor]) => {
     let result, swapsCount;
 
     const description = "Trade work to do a contracting for working on project";
-    const ammount = 100;
+    const amount = 100;
 
     before(async () => {
-      result = await uswapp.createNewSwap(description, ammount, contractor);
+      result = await uswapp.createNewSwap(description, amount, contractor);
       swapsCount = await uswapp.swapsCount();
     });
 
@@ -47,7 +47,7 @@ contract("uSwapp", ([deployer, contractor]) => {
 
       // data of the function
       assert.equal(event.description, description, "Description is correct");
-      assert.equal(event.ammount, ammount, "Ammont is correct");
+      assert.equal(event.amount, amount, "Ammont is correct");
       assert.equal(event.contractor, contractor, "Contractor is correct");
 
       // other data of the swap
@@ -57,7 +57,7 @@ contract("uSwapp", ([deployer, contractor]) => {
       assert.equal(event.done, false, "done is correct");
 
       // Must have description
-      await uswapp.createNewSwap("", ammount, contractor).should.be.rejected;
+      await uswapp.createNewSwap("", amount, contractor).should.be.rejected;
     });
 
     //check from Struct
@@ -67,7 +67,7 @@ contract("uSwapp", ([deployer, contractor]) => {
 
       // data of the function
       assert.equal(swap.description, description, "Description is correct");
-      assert.equal(swap.ammount, ammount, "Ammont is correct");
+      assert.equal(swap.amount, amount, "Ammont is correct");
       assert.equal(swap.contractor, contractor, "Contractor is correct");
 
       // other data of the swap

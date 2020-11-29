@@ -9,25 +9,16 @@ class Button extends Component {
   }
   // Check the status of the swap
   getSwapStatus(swap) {
-    if (swap.done === true) {
-      return (
-        <span class="badge badge-pill badge-primary">
-          Swapp done aprove by sender
-        </span>
-      );
-    }
-    if (swap.doneContractor === true) {
+    if (swap.done) {
+      return <span class="badge badge-pill badge-primary">Swap done</span>;
+    } else if (swap.doneContractor) {
       return (
         <span className="badge badge-pill badge-primary">
-          Swapp check as finish by reciver
+          Swap check as finish by reciver
         </span>
       );
     }
-    if (
-      swap.doneCreator === false &&
-      swap.doneContractor === false &&
-      swap.done === false
-    ) {
+    if (!swap.doneCreator && !swap.doneContractor && !swap.done) {
       return (
         <span className="badge badge-pill badge-primary">In progress</span>
       );
@@ -38,13 +29,16 @@ class Button extends Component {
   // could not validity if is not involve (the front end dont matter )
   renderValidityButton() {
     const address = this.props.account;
+    const id = this.props.swap.id;
+    const done = this.props.swap.done;
+
     if (
-      address === this.props.swap.contractor ||
-      address === this.props.swap.creator
+      (address === this.props.swap.contractor && !done) ||
+      (address === this.props.swap.creator && !done)
     ) {
       return (
         <div>
-          <div class="btn btn-primary">
+          <div class="btn btn-primary" onClick={() => this.props.validSwap(id)}>
             <ion-icon name="checkmark-circle-outline"></ion-icon> Mark as valid
           </div>
           <div className="informativeText">
@@ -71,12 +65,12 @@ class Button extends Component {
                 <b>Swap</b>
               </label>
               <h2 className="text-center" width="100%">
-                {this.props.swap.ammount.toNumber()} ETH
+                {this.props.swap.amount.toNumber()} ETH
               </h2>
               <br />
               <div className="row">
                 <div className="col-5 addressSwap">
-                  <label>From :</label>
+                  <label>Creator :</label>
                   <br />
                   <a
                     target="_blank"
@@ -89,7 +83,7 @@ class Button extends Component {
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
                 <div className="col-5 addressSwap">
-                  <label>To :</label> <br />
+                  <label>Contractor :</label> <br />
                   <a
                     target="_blank"
                     href={`https://etherscan.io/address/${this.props.swap.contractor}`}
@@ -99,14 +93,27 @@ class Button extends Component {
                 </div>
               </div>
               <p className="description">{this.props.swap.description}</p>
+              <p className="description">
+                Done by creator: {String(this.props.swap.doneCreator)}
+              </p>
+              <p className="description">
+                Done by contractor: {String(this.props.swap.doneContractor)}
+              </p>
+              <p className="description">
+                Swap done: {String(this.props.swap.done)}
+              </p>
             </div>
             <div className="row">
-              <div className="col-5 validationButton">
+              <div className="col-4 validationButton">
                 {this.renderValidityButton()}
               </div>
 
-              <div className="col-2"></div>
-              <div className="col-5">{this.getSwapStatus(this.props.swap)}</div>
+              <div className="col-4 text-center swapId">
+                Swap id: #{this.props.id}
+              </div>
+              <div className="col-4 text-right">
+                {this.getSwapStatus(this.props.swap)}
+              </div>
             </div>
             <br />
           </div>

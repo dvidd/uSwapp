@@ -8,26 +8,26 @@ class Info extends Component {
     super(props);
     this.state = {
       toAddress: "",
-      ammount: 0,
+      amount: 0,
       description: "",
       notValidAddress: true,
-      notValidAmmount: true,
+      notValidAmount: true,
       notValidDescription: true,
       touch: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
+  // TODO transform amount to USD and EU
   createNewSwap() {
     if (
-      this.state.notValidAddress === false &&
-      this.state.notValidAmmount === false &&
-      this.state.notValidDescription === false &&
-      this.state.touch === true
+      !this.state.notValidAddress &&
+      !this.state.notValidAmount &&
+      !this.state.notValidDescription &&
+      this.state.touch
     ) {
       this.props.createNewSwap(
         this.state.description,
-        this.state.ammount,
+        this.state.amount,
         this.state.toAddress
       );
     } else {
@@ -49,11 +49,11 @@ class Info extends Component {
     } else {
       this.setState({ notValidAddress: false });
     }
-    var ammount = this.state.ammount;
-    if (ammount === 0 || ammount < 0 || ammount === null) {
-      this.setState({ notValidAmmount: true });
+    var amount = this.state.amount;
+    if (amount === 0 || amount < 0 || amount === null) {
+      this.setState({ notValidAmount: true });
     } else {
-      this.setState({ notValidAmmount: false });
+      this.setState({ notValidAmount: false });
     }
     var description = this.state.description;
     if (description === "" || description === null) {
@@ -78,14 +78,14 @@ class Info extends Component {
             <input
               onChange={this.handleChange}
               type="number"
-              name="ammount"
+              name="amount"
               className="form-control form-control-lg"
               placeholder="0"
               required
             />
-            {this.state.notValidAmmount && this.state.touch && (
+            {this.state.notValidAmount && this.state.touch && (
               <div className="invalid-feedback d-block">
-                Please enter a valid ammount for the swap
+                Please enter a valid amount for the swap
               </div>
             )}
             <br />

@@ -18,7 +18,8 @@ class App extends Component {
       uSwapp: {},
       balance: 0,
       account: "",
-      latestID: 0
+      latestID: 0,
+      id: null
     };
   }
 
@@ -29,7 +30,7 @@ class App extends Component {
     if (walletInstall) {
       await this.loadWeb3();
       await this.loadBlockchainData();
-      this.getSwap(1236);
+      this.getSwap(1235);
     }
   }
   // Get the balance of the address account in Ether
@@ -72,13 +73,13 @@ class App extends Component {
     this.setState({ loading: false });
   }
   // Create a new swap
-  createNewSwap = (_description, _ammount, _toAddress) => {
+  createNewSwap = (_description, _amount, _toAddress) => {
     this.setState({ loading: true });
     this.state.uSwapp.methods
-      .createNewSwap(_description, _ammount, _toAddress)
+      .createNewSwap(_description, _amount, _toAddress)
       .send({
         from: this.state.account,
-        value: window.web3.utils.toWei(_ammount, "ether")
+        value: window.web3.utils.toWei(_amount, "ether")
       })
       .on("transactionHash", hash => {
         this.setState({ loading: false });
@@ -89,12 +90,21 @@ class App extends Component {
   getSwap = async _swapId => {
     const swap = await this.state.uSwapp.methods.swaps(_swapId).call();
     console.log(swap);
-    this.setState({ swap: swap });
+    this.setState({ swap });
+    alert(_swapId);
   };
+
   // Confirm swap validity
   validSwap = async _swapId => {
-    await this.state.uSwapp.methods.checkValidity(_swapId).call();
-    this.getSwap(_swapId);
+    this.state.uSwapp.methods
+      .checkValidity(_swapId)
+      .send({
+        from: this.state.account
+      })
+      .on("transactionHash", hash => {
+        this.getSwap(_swapId);
+        alert("Swap validated by your part!");
+      });
   };
 
   render() {
@@ -112,6 +122,7 @@ class App extends Component {
             createNewSwap={this.createNewSwap}
             balance={this.state.balance}
             latestID={this.state.latestID}
+            id={this.state.id}
           />
         )}
       </div>

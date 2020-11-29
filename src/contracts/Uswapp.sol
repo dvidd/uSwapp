@@ -23,14 +23,8 @@ contract uSwapp {
         return address(this).balance;
     }
 
-    // Deposit into the contract
-    function deposit(uint256 amount) public payable {
-        require(msg.value == amount);
-        // nothing else to do!
-    }
-
-    function withdraw(uint256 ammount) public {
-        recipient.transfer(ammount);
+    function withdraw(address payable receiver, uint256 amount) public payable {
+        receiver.transfer(amount);
     }
 
     // Creat user
@@ -56,8 +50,8 @@ contract uSwapp {
     struct Swap {
         uint256 id;
         string description;
-        uint256 ammount;
-        address contractor;
+        uint256 amount;
+        address payable contractor;
         address creator;
         bool doneContractor;
         bool doneCreator;
@@ -67,8 +61,8 @@ contract uSwapp {
     event SwapCreated(
         uint256 id,
         string description,
-        uint256 ammount,
-        address contractor,
+        uint256 amount,
+        address payable contractor,
         address creator,
         bool doneContractor,
         bool doneCreator,
@@ -76,7 +70,7 @@ contract uSwapp {
     );
 
     // Create a new contract
-    // Todo Widhtdraw the ammount for the contract
+    // Todo Widhtdraw the amount for the contract
     function storeETH() public payable {}
 
     // Think obout how is making the contract and how we could do it so it works
@@ -84,7 +78,7 @@ contract uSwapp {
     function createNewSwap(
         string memory _description,
         uint256 _amount,
-        address _contractor
+        address payable _contractor
     ) public payable {
         require(_amount > 0, "amount cannot be 0");
         // check validity of swap info
@@ -121,6 +115,9 @@ contract uSwapp {
 
     // Both parties check the list on done
     function checkValidity(uint256 _swapId) public {
+        bool creatorDone = false;
+        bool contractorDone = false;
+
         // Check that the sender belong two the contract
         require(
             msg.sender == swaps[_swapId].contractor ||
@@ -129,19 +126,20 @@ contract uSwapp {
         // check if is the contractor
         if (msg.sender == swaps[_swapId].contractor) {
             swaps[_swapId].doneContractor = true;
+            contractorDone = true;
         }
         // Check if is the creator
         if (msg.sender == swaps[_swapId].creator) {
             swaps[_swapId].doneCreator = true;
+            creatorDone = true;
         }
         // If both are check are check mark done the contract
-        if (
-            swaps[_swapId].doneCreator == true &&
-            swaps[_swapId].doneContractor == true
-        ) {
-            swaps[_swapId].done == true;
-            // Withdraw the ammount to the reciver wich is specify in the constructor of the contract
-            withdraw(swaps[_swapId].ammount);
+        if (creatorDone == true && contractorDone == true) {
+            require(swaps[_swapId].done = false);
+            swaps[_swapId].done = true;
+            recipient = swaps[_swapId].contractor;
+            // Withdraw the amount to the reciver wich is specify in the constructor of the contract
+            withdraw(recipient, swaps[_swapId].amount);
         }
     }
 

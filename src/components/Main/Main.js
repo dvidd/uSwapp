@@ -8,7 +8,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swapId: "",
       create: false // for more quick develop in the interface (( take this offf ))
     };
   }
@@ -22,6 +21,7 @@ class Main extends Component {
       return (
         <div>
           <Swap
+            id={this.props.id}
             account={this.props.account}
             swap={swap}
             validSwap={this.props.validSwap}
@@ -33,7 +33,7 @@ class Main extends Component {
 
   renderCard() {
     const create = this.state.create;
-    if (create === true) {
+    if (create) {
       return (
         <CreationCard
           createNewSwap={this.props.createNewSwap}
@@ -51,7 +51,7 @@ class Main extends Component {
   }
 
   returnCardChanger() {
-    if (this.state.create === true) {
+    if (this.state.create) {
       return (
         <h5 className="changeCardtext" onClick={() => this.changeCard()}>
           <ion-icon name="search-outline"></ion-icon> Search for a Swap
