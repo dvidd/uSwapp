@@ -4,6 +4,7 @@
   "description": "Contractor protocol based in ethereum blockchain",
   "author": "dvidd",
   "dependencies": {
+    "@sweetalert2/theme-dark": "^4.0.1",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-es2015": "6.24.1",
@@ -21,6 +22,7 @@
     "react-modal": "^3.11.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.3",
+    "sweetalert2": "^10.10.4",
     "truffle": "^5.0.5",
     "wallet-address-validator": "^0.2.4",
     "web3": "1.0.0-beta.55"
