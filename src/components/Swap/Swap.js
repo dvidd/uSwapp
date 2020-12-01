@@ -109,7 +109,7 @@ class Button extends Component {
               </div>
 
               <div className="col-4 text-center swapId">
-                Swap id: #{this.props.id}
+                {/* Swap id: #{this.props.id} */}
               </div>
               <div className="col-4 text-right">
                 {this.getSwapStatus(this.props.swap)}
