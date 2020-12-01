@@ -23,10 +23,6 @@ contract uSwapp {
         return address(this).balance;
     }
 
-    function withdraw(address payable receiver, uint256 amount) public payable {
-        receiver.transfer(amount);
-    }
-
     // Creat user
     function createUser(string memory _username) public {
         require(bytes(_username).length != 0);
@@ -69,9 +65,9 @@ contract uSwapp {
         bool done
     );
 
+    event SwapDone(uint256 _swapId, uint256 amount);
+
     // Create a new contract
-    // Todo Widhtdraw the amount for the contract
-    function storeETH() public payable {}
 
     // Think obout how is making the contract and how we could do it so it works
     // In boths ways
@@ -135,11 +131,13 @@ contract uSwapp {
         }
         // If both are check are check mark done the contract
         if (creatorDone == true && contractorDone == true) {
-            require(swaps[_swapId].done = false);
+            require(swaps[_swapId].done == false);
             swaps[_swapId].done = true;
             recipient = swaps[_swapId].contractor;
+
             // Withdraw the amount to the reciver wich is specify in the constructor of the contract
-            withdraw(recipient, swaps[_swapId].amount);
+            emit SwapDone(_swapId, swaps[_swapId].amount);
+            recipient.transfer(swaps[_swapId].amount);
         }
     }
 
