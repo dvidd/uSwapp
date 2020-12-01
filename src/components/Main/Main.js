@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import CreationCard from "../CreationCard/CreationCard";
 import Swap from "../Swap/Swap";
 import SwapSearch from "../SwapSearch/SwapSearch";
+import Info from "../../components/Shared/Info";
 
 class Main extends Component {
   constructor(props) {
@@ -65,11 +66,16 @@ class Main extends Component {
       );
     }
   }
+  returnInfo() {
+    if (this.props.noWallet) {
+      return <Info />;
+    }
+  }
 
   render() {
     return (
       <div className="container-fluid mt-5">
-        {/* <Info /> */}
+        {this.returnInfo()}
         <div className="row">
           <div
             id="content mt-3"

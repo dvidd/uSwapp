@@ -19,7 +19,8 @@ class App extends Component {
       balance: 0,
       account: "",
       latestID: 0,
-      id: null
+      id: null,
+      noWallet: false
     };
   }
 
@@ -31,7 +32,8 @@ class App extends Component {
       await this.loadWeb3();
       await this.loadBlockchainData();
       this.getbalance();
-      // this.getSwap(1235); For quick develop
+    } else {
+      this.setState({ noWallet: true });
     }
   }
   // Get the balance of the address account in Ether
@@ -52,6 +54,7 @@ class App extends Component {
       window.web3 = new Web3(window.web3.currentProvider);
     } else {
       // Is not install metamask or other provider
+      this.setState({ noWallet: true });
     }
   }
   async loadBlockchainData() {
@@ -123,6 +126,7 @@ class App extends Component {
             balance={this.state.balance}
             latestID={this.state.latestID}
             id={this.state.id}
+            noWallet={this.state.noWallet}
           />
         )}
       </div>
