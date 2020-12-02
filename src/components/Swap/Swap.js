@@ -59,11 +59,14 @@ class Button extends Component {
     return (
       <div className="card mb-4">
         <div className="card-body">
+          {/* <label className="float-left">
+            <b>Swap</b>
+          </label> */}
           <div className="mb-3">
             <div>
-              <label className="float-left">
-                <b>Swap</b>
-              </label>
+              <span className="text-left" width="100%">
+                ID : #{this.props.swap.id.toNumber()}
+              </span>
               <h2 className="text-center" width="100%">
                 {this.props.swap.amount.toNumber()} ETH
               </h2>
@@ -73,6 +76,7 @@ class Button extends Component {
                   <label>Creator :</label>
                   <br />
                   <a
+                    className="swapcontract"
                     target="_blank"
                     href={`https://etherscan.io/address/${this.props.swap.creator}`}
                   >
@@ -80,12 +84,13 @@ class Button extends Component {
                   </a>
                 </div>
                 <div className="col-2 text-center arrowSwap">
-                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                  <ion-icon name="arrow-forward-circle-outline"></ion-icon>
                 </div>
                 <div className="col-5 addressSwap">
                   <label>Contractor :</label> <br />
                   <a
                     target="_blank"
+                    className="swapcontract"
                     href={`https://etherscan.io/address/${this.props.swap.contractor}`}
                   >
                     {this.props.swap.contractor}

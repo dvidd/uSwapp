@@ -215,7 +215,7 @@ input:hover {
 /* Swapp  */
 
 .arrowSwap {
-  font-size: 39px;
+  font-size: 49px;
 }
 .addressSwap a {
   font-size: 18px;
@@ -260,4 +260,15 @@ input:hover {
 }
 .swapId {
   text-align: center !important;
+}
+.arrowSwapCircle {
+  border-radius: 100px;
+  height: 60px !important;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #fff;
+  text-align: center !important;
+  font-size: 40px;
+  padding: 3px;
+  vertical-align: middle !important;
 }
