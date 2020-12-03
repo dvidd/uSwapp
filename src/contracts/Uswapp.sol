@@ -71,6 +71,7 @@ contract uSwapp {
 
     // Think obout how is making the contract and how we could do it so it works
     // In boths ways
+    // TODO : Change the ammount for the msg.value
     function createNewSwap(
         string memory _description,
         uint256 _amount,
@@ -111,32 +112,26 @@ contract uSwapp {
 
     // Both parties check the list on done
     function checkValidity(uint256 _swapId) public {
-        bool creatorDone = false;
-        bool contractorDone = false;
-        uint256 id = _swapId;
         // Check that the sender belong two the contract
         require(
-            msg.sender == swaps[id].contractor ||
-                msg.sender == swaps[id].creator
+            msg.sender == swaps[_swapId].contractor ||
+                msg.sender == swaps[_swapId].creator
         );
         // check if is the contractor
-        if (msg.sender == swaps[id].contractor) {
-            swaps[id].doneContractor = true;
-            contractorDone = true;
+        if (msg.sender == swaps[_swapId].contractor) {
+            swaps[_swapId].doneContractor = true;
         }
         // Check if is the creator
-        if (msg.sender == swaps[id].creator) {
-            swaps[id].doneCreator = true;
-            creatorDone = true;
+        if (msg.sender == swaps[_swapId].creator) {
+            swaps[_swapId].doneCreator = true;
         }
         // If both are check are check mark done the contract
-        if (creatorDone == true && contractorDone == true) {
-            require(swaps[id].done == false);
-            swaps[id].done = true;
-            recipient = swaps[id].contractor;
-
+        if (swaps[_swapId].doneContractor && swaps[_swapId].doneCreator) {
+            require(swaps[_swapId].done == false);
+            swaps[_swapId].done = true;
+            recipient = swaps[_swapId].contractor;
             // Withdraw the amount to the reciver wich is specify in the constructor of the contract
-            emit SwapDone(id, swaps[id].amount);
+            emit SwapDone(_swapId, swaps[_swapId].amount);
             recipient.transfer(swaps[_swapId].amount);
         }
     }
