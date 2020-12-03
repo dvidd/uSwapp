@@ -113,30 +113,30 @@ contract uSwapp {
     function checkValidity(uint256 _swapId) public {
         bool creatorDone = false;
         bool contractorDone = false;
-
+        uint256 id = _swapId;
         // Check that the sender belong two the contract
         require(
-            msg.sender == swaps[_swapId].contractor ||
-                msg.sender == swaps[_swapId].creator
+            msg.sender == swaps[id].contractor ||
+                msg.sender == swaps[id].creator
         );
         // check if is the contractor
-        if (msg.sender == swaps[_swapId].contractor) {
-            swaps[_swapId].doneContractor = true;
+        if (msg.sender == swaps[id].contractor) {
+            swaps[id].doneContractor = true;
             contractorDone = true;
         }
         // Check if is the creator
-        if (msg.sender == swaps[_swapId].creator) {
-            swaps[_swapId].doneCreator = true;
+        if (msg.sender == swaps[id].creator) {
+            swaps[id].doneCreator = true;
             creatorDone = true;
         }
         // If both are check are check mark done the contract
-        if (swaps[_swapId].doneContractor && swaps[_swapId].doneCreator) {
-            require(swaps[_swapId].done == false);
-            swaps[_swapId].done = true;
-            recipient = swaps[_swapId].contractor;
+        if (creatorDone == true && contractorDone == true) {
+            require(swaps[id].done == false);
+            swaps[id].done = true;
+            recipient = swaps[id].contractor;
 
             // Withdraw the amount to the reciver wich is specify in the constructor of the contract
-            emit SwapDone(_swapId, swaps[_swapId].amount);
+            emit SwapDone(id, swaps[id].amount);
             recipient.transfer(swaps[_swapId].amount);
         }
     }
