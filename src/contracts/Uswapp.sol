@@ -130,7 +130,7 @@ contract uSwapp {
             creatorDone = true;
         }
         // If both are check are check mark done the contract
-        if (creatorDone == true && contractorDone == true) {
+        if (swaps[_swapId].doneContractor && swaps[_swapId].doneCreator) {
             require(swaps[_swapId].done == false);
             swaps[_swapId].done = true;
             recipient = swaps[_swapId].contractor;
