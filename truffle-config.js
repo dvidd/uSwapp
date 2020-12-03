@@ -1,5 +1,8 @@
-require('babel-register');
-require('babel-polyfill');
+require("dotenv").config();
+const HDWalletProvider = require("truffle-hdwallet-provider");
+
+require("babel-register");
+require("babel-polyfill");
 
 module.exports = {
   networks: {
@@ -8,9 +11,30 @@ module.exports = {
       port: 7545,
       network_id: "*" // Match any network id
     },
+    kovan: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.MNENOMIC,
+          "https://kovan.infura.io/v3/" + process.env.INFURA_API_KEY
+        ),
+      network_id: 42,
+      gas: 3000000,
+      gasPrice: 10000000000
+    },
+    // main ethereum network(mainnet)
+    main: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.MNENOMIC,
+          "https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY
+        ),
+      network_id: 1,
+      gas: 3000000,
+      gasPrice: 10000000000
+    }
   },
-  contracts_directory: './src/contracts/',
-  contracts_build_directory: './src/abis/',
+  contracts_directory: "./src/contracts/",
+  contracts_build_directory: "./src/abis/",
   compilers: {
     solc: {
       optimizer: {
@@ -19,4 +43,4 @@ module.exports = {
       }
     }
   }
-}
+};
