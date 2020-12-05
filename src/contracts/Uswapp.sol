@@ -129,10 +129,9 @@ contract uSwapp {
         if (swaps[_swapId].doneContractor && swaps[_swapId].doneCreator) {
             require(swaps[_swapId].done == false);
             swaps[_swapId].done = true;
-            recipient = swaps[_swapId].contractor;
             // Withdraw the amount to the reciver wich is specify in the constructor of the contract
+            swaps[_swapId].contractor.transfer(swaps[_swapId].amount);
             emit SwapDone(_swapId, swaps[_swapId].amount);
-            recipient.transfer(swaps[_swapId].amount);
         }
     }
 
