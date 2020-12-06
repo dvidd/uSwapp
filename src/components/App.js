@@ -7,7 +7,7 @@ import USwapp from "../abis/uSwapp.json";
 import Web3 from "web3";
 
 import "./App.css";
-import Swal from "sweetalert2";
+
 import Loader from "./Shared/Loader";
 
 class App extends Component {
