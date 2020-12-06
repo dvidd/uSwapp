@@ -80,7 +80,11 @@ class App extends Component {
   createNewSwap = (_description, _amount, _toAddress) => {
     this.setState({ loading: true });
     this.state.uSwapp.methods
-      .createNewSwap(_description, _amount, _toAddress)
+      .createNewSwap(
+        _description,
+        window.web3.utils.toWei(_amount, "ether"),
+        _toAddress
+      )
       .send({
         from: this.state.account,
         value: window.web3.utils.toWei(_amount, "ether")
