@@ -9394,6 +9394,106 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
+    "42": {
+      "events": {
+        "0x1defd06f8693406fb914c630a30bfc9fbb3e28791f78d2856cf20d8b6c479797": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address payable",
+              "name": "contractor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "creator",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "doneContractor",
+              "type": "bool"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "doneCreator",
+              "type": "bool"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "done",
+              "type": "bool"
+            }
+          ],
+          "name": "SwapCreated",
+          "type": "event"
+        },
+        "0xc1b97687ea4e9ed33df69da0ec9eb95ad3783d25b168033833fba064f4fb435a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_swapId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "SwapDone",
+          "type": "event"
+        },
+        "0x793452bfa09c2f1473de9e71cf726590fccd45eb04c4be138b36826dc5d8e626": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "username",
+              "type": "string"
+            }
+          ],
+          "name": "userCreated",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xbFdCB9E88e451A35D855817735d879a0a3315160",
+      "transactionHash": "0xba90831a9cdd4ce04ae0ec6350de1821dada69104b99f9c346a6b3d2b33379ed"
+    },
     "5777": {
       "events": {
         "0xcc0b199537e3a37c234a4799dc116e5e4053bf4294b0b2804031709b98d1aa56": {
@@ -9557,7 +9657,7 @@
     }
   },
   "schemaVersion": "3.3.2",
-  "updatedAt": "2020-12-06T13:13:32.368Z",
+  "updatedAt": "2020-12-06T13:26:22.891Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
