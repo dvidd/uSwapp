@@ -119,7 +119,7 @@ class Info extends Component {
             )}
             <br />
             <div onClick={() => this.createNewSwap()}>
-              <BigButton text={"Create Swapp"}></BigButton>
+              <BigButton text={"Create Swap"}></BigButton>
             </div>
           </div>
         </div>

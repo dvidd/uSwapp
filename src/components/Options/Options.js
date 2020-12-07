@@ -53,7 +53,7 @@ class Options extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ion-icon name="logo-twitter"></ion-icon> Twitter
+              <ion-icon name="newspaper-outline"></ion-icon> Blog
             </a>
           </div>
           <div className="element">
@@ -62,7 +62,7 @@ class Options extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ion-icon name="logo-twitter"></ion-icon> @dviddb
+              <ion-icon name="logo-twitter"></ion-icon> Creator
             </a>
           </div>
         </span>
