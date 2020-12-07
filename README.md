@@ -62,7 +62,7 @@ truffle migrate
 This project is currently being develop ( Not functional yet )
 
 - Add a username name?
-- Do transaction withdraw()
-- Point decimals
-- Alert no wallet conected
-- Exchage dollars and other currencies to ether
+- Do transaction withdraw() because it does not work jet
+- Exchage dollars and other currencies to ether / translation
+- Errors in the transaction 
+- Show the swaps that you created 
