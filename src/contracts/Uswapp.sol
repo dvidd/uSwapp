@@ -5,7 +5,6 @@ contract uSwapp {
     uint256 public swapsCount = 1234;
 
     address payable public owner;
-    address payable public recipient; // The account receiving the payments.
 
     // Set user
     mapping(address => User) public users;
