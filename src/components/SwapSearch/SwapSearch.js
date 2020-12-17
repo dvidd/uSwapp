@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import BigButton from "../Shared/Button";
 
+import Swap from "../Swap/Swap";
+
 import Loader from "../Shared/Loader";
 
 class Search extends Component {
@@ -13,6 +15,21 @@ class Search extends Component {
       touch: false
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+  renderSwap() {
+    const swap = this.props.swap;
+    if (swap !== undefined && swap !== null) {
+      return (
+        <div>
+          <Swap
+            id={this.props.id}
+            account={this.props.account}
+            swap={swap}
+            validSwap={this.props.validSwap}
+          />
+        </div>
+      );
+    }
   }
 
   errors() {
@@ -49,6 +66,8 @@ class Search extends Component {
   render() {
     return (
       <div>
+        {this.renderSwap()}
+
         <div className="card light-card mb-4">
           <div className="card-body">
             <div className="mb-3">
