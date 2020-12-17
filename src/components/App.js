@@ -138,7 +138,7 @@ class App extends Component {
                 noWallet={this.state.noWallet}
               />
             </Route>
-            <Route path="search">
+            <Route path="/search">
               <SwapSearch getSwap={this.getSwap} swap={this.state.swap} />
             </Route>
           </Switch>
