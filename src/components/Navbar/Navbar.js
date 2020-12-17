@@ -32,12 +32,12 @@ class Navbar extends Component {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/#/frelances">
+              <a class="nav-link" href="/frelances">
                 Freelancers
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/#/search">
+              <a class="nav-link" to="/search">
                 Search
               </a>
             </li>
