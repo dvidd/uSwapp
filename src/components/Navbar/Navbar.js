@@ -25,7 +25,23 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav mr-auto"></ul>
+          <ul className="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="#">
+                Swaps <span class="sr-only"></span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#/frelances">
+                Freelancers
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#/search">
+                Search
+              </a>
+            </li>
+          </ul>
           <div className="form-inline my-2 my-lg-0 ">
             <div className="text-secondary mr-auto">
               <small id="account ">{this.props.account}</small>
