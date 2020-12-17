@@ -9,6 +9,10 @@ import Web3 from "web3";
 import "./App.css";
 
 import Loader from "./Shared/Loader";
+import SwapSearch from "./SwapSearch/SwapSearch";
+
+// Router
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -116,24 +120,30 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Router>
         <Navbar account={this.state.account} />
         {this.state.loading ? (
           <Loader></Loader>
         ) : (
-          <Main
-            account={this.state.account}
-            validSwap={this.validSwap}
-            swap={this.state.swap}
-            getSwap={this.getSwap}
-            createNewSwap={this.createNewSwap}
-            balance={this.state.balance}
-            latestID={this.state.latestID}
-            id={this.state.id}
-            noWallet={this.state.noWallet}
-          />
+          <Switch>
+            <Route path="/">
+              <Main
+                account={this.state.account}
+                validSwap={this.validSwap}
+                swap={this.state.swap}
+                createNewSwap={this.createNewSwap}
+                balance={this.state.balance}
+                latestID={this.state.latestID}
+                id={this.state.id}
+                noWallet={this.state.noWallet}
+              />
+            </Route>
+            <Route path="search">
+              <SwapSearch getSwap={this.getSwap} swap={this.state.swap} />
+            </Route>
+          </Switch>
         )}
-      </div>
+      </Router>
     );
   }
 }
