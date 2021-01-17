@@ -26,7 +26,7 @@ class Navbar extends Component {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mr-auto">
-            <li class="nav-item ">
+            {/* <li class="nav-item ">
               <a class="nav-link" href="#">
                 Swaps <span class="sr-only"></span>
               </a>
@@ -37,10 +37,10 @@ class Navbar extends Component {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" to="/search">
+              <a class="nav-link" href="/search">
                 Search
               </a>
-            </li>
+            </li> */}
           </ul>
           <div className="form-inline my-2 my-lg-0 ">
             <div className="text-secondary mr-auto">
@@ -58,8 +58,8 @@ class Navbar extends Component {
                 alt="User Identicon uSwapp"
               />
             ) : (
-              <Button text="Connect wallet" />
-            )}
+                <Button text="Connect wallet" />
+              )}
             <Options></Options>
           </div>
         </div>
