@@ -120,30 +120,25 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <div>
         <Navbar account={this.state.account} />
         {this.state.loading ? (
           <Loader></Loader>
         ) : (
-          <Switch>
-            <Route path="/">
-              <Main
-                account={this.state.account}
-                validSwap={this.validSwap}
-                swap={this.state.swap}
-                createNewSwap={this.createNewSwap}
-                balance={this.state.balance}
-                latestID={this.state.latestID}
-                id={this.state.id}
-                noWallet={this.state.noWallet}
-              />
-            </Route>
-            <Route path="/search">
-              <SwapSearch getSwap={this.getSwap} swap={this.state.swap} />
-            </Route>
-          </Switch>
-        )}
-      </Router>
+
+            <Main
+              account={this.state.account}
+              validSwap={this.validSwap}
+              swap={this.state.swap}
+              getSwap={this.getSwap}
+              createNewSwap={this.createNewSwap}
+              balance={this.state.balance}
+              latestID={this.state.latestID}
+              id={this.state.id}
+              noWallet={this.state.noWallet}
+            />
+          )}
+      </div>
     );
   }
 }
